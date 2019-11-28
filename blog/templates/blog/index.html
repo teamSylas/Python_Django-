@@ -1,0 +1,19 @@
+<h1>Blog Nam ({{posts|length}} posts)</h1>
+
+{% for post in posts %}
+    <article>
+        <h2><a href="/blog/posts/{{post.id}}">#{{post.id}} - {{post.title|upper}}</a></h2>
+        <p>{{post.body|truncatewords:3}}</p>
+
+        <p><a href="/blog/posts/{{post.id}}">lire la suite </a></p>
+    </article>
+
+    {%if not forloop.last%}
+    <!-- last pour dernier
+    first pour le premier
+    counter pour savoir a quel index on se trouve -->
+        <hr>
+    {% endif %}
+{% empty %}
+    <p> Sorry not poste e valebol</p>
+{%endfor%}
